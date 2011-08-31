@@ -1,0 +1,165 @@
+
+
+Vdp2:
+
+  Todo: The tiling examples are a copy paste mess that need to be refactored 
+  into library functions.
+
+  Bugs I've fixed that need tests:
+    Vdp1 color offset (craofb)
+  
+  3.3
+    Cycle Pattern
+      TODO
+  
+  4.3
+    Cell Format
+      vdp2_tiling.cpp
+      
+  4.4
+    Character Size
+      1x1
+        TODO
+      2x2
+        vdp2_tiling.cpp
+        
+  4.7
+    Plane Size
+      1x1
+        TODO
+      2x1
+        TODO
+      2x2
+        TODO
+    Screen Over Process
+      Mode 0
+        TODO
+      Mode 1
+        TODO
+      Mode 2
+        TODO
+      Mode 3
+        TODO
+      
+  4.9
+    Bitmaps
+      vdp2_bitmap_11bpp.cpp
+      vdp2_bitmap_15bpp.cpp
+      vdp2_bitmap_32bpp.cpp
+  4.11
+    Mosaic
+      TODO
+  
+  5.1 
+    Screen Scroll
+      vdp2_scroll_basic.cpp
+      vdp2_scroll_fractional.cpp
+  5.2 
+    Expansion/Contraction 
+      vdp2_scroll_coordinate_increment.cpp
+  5.3
+    vdp2_line_table_vertical_scroll.cpp
+      
+    Line Scroll
+      vdp2_line_scroll_horizontal.cpp
+      
+    Vertical Cell Scroll
+      vdp2_cell_scroll.cpp
+      
+    Line Zoom
+      vdp2_line_table_horizontal_increment.cpp
+  
+  6.3 
+    Rotation Parameter Read Control
+    Rotated Framebuffer
+      TODO
+    Parameter Change
+      Mode 0
+        TODO
+      Mode 1
+        TODO
+      Mode 2
+        TODO
+      Mode 3
+        TODO
+    Coefficient Tables
+      Mode 0
+        TODO
+      Mode 1
+        TODO
+      Mode 2
+        TODO
+      Mode 3
+        TODO
+      Line Color Screen Coefficient Data
+        TODO
+      
+  7.1 
+    Line Color Screen
+    Back Screen
+      Per Line
+        vdp2_line_screen_back.cpp
+  
+  8.1
+    Normal Window
+      vdp2_window_and_logic.cpp
+      vdp2_window_transparent.cpp
+      
+    Normal Line Window
+      TODO
+    Sprite Window
+      TODO
+  8.2
+    Rotation Parameter Window
+      TODO
+    Color Calculation Window
+      TODO
+    
+  9.1
+    Color Calculation Enable Conditions
+      <=
+        TODO
+      >=
+        TODO
+      ==
+        TODO
+      msb is 1
+        TODO
+  
+  10.3
+    Special Function Code
+    
+  11
+    Special Priority
+      Per Character
+        TODO
+      Per Dot
+        TODO
+    
+  12
+    Color Calculation
+      vdp2_color_calculation_additive.cpp
+      vdp2_color_calculation_ratio.cpp
+    Per Dot
+      vdp2_color_calculation_special_bitmap_dot.cpp
+      vdp2_color_calculation_special_tile_dot.cpp
+    Per Character
+      vdp2_color_calculation_special_tile_character.cpp
+    Per Msb
+      TODO BITMAP, pretty sure it's possible
+      vdp2_color_calculation_special_tile_msb.cpp
+      
+  13
+    Color Offset
+      vdp2_color_offset.cpp
+  14
+    Normal Shadow
+      TODO
+    Transparent Shadow
+      TODO
+    Sprite Shadow
+      TODO
+      
+      
+      
+      

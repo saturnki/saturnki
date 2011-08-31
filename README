@@ -1,0 +1,79 @@
+SaturnKi is an open source Sega Saturn emulator.
+
+Build Instructions:
+
+Windows:
+
+TODO
+
+Linux (ubuntu, sdl version)
+
+sudo apt-get install g++
+sudo apt-get install cmake
+sudo apt-get install libsdl1.2-dev
+Go to platform\build\cmake and type cmake CMakeLists.txt
+type make
+type ./gui_sdl insert_your_cd_filename_here.bin to run the sdl version
+
+MacOs
+
+TODO
+
+General Status:
+
+Able to run some homebrew demos.  Commercial games do not work yet as far as I know.
+
+Individual Processor Status:
+
+Sh2 : Instruction level timing, instruction set should be fairly accurate.  Lots of 7604 on-chip functionality is buggy or unimplemented.
+
+Scu : Needs dma timing probably.  We need more test programs for the actual hardware to make sure the instruction set is correctly emulated.
+
+Scsp : Needs all floating point math removed.  The timing is emulated near the cycle-level, although this is not necessary.  Has bugs.  Needs midi, dma work.  I don't know how the fm works, so it is unemulated.  Dsp needs to be emulated.
+
+M68k : Instruction level timing, messy and needs refactoring.  Is not as robust as it would need to be to run any sort of arbitrary code, but is enough to run the standard Sega sound engine that numerous Saturn titles use.  Ought to be embedded into some other emulator (example: Genesis) and tested thoroughly.
+
+Vdp1 : The core uses arbitrary lines to draw the quads.The interpolation algorithm for line drawing needs to be fixed, there is pixel drop-out at the moment.  There's not really much information on how long the drawing of shapes takes.  A good test would be to somehow check how many cycles it takes to draw an untextured line, then a textured one, then a gouraud shaded one, etc.
+
+Vdp2 : Pixel-based, incredibly slow.  The Vdp2's ability to change the priority of, or alpha blend individual pixels makes it slower to emulate.  Most major features are supported but there are various bugs.
+
+Smpc, Cd Block: These chips contain internal roms and cannot be properly emulated until they are decapped.  Until that happens I am using Yabause's hle cores.  Thanks to them for their hard work.
+
+Bios: To make debugging faster I'm using Yabause's hle bios.  Once SaturnKi is able to boot the real bios that will be an option as well.
+
+Gui/Cross platform compatibility
+
+I have provided a simple callback-based C interface to the core in saturnki.h, and it should be easy to port to other platforms.  The sdl port should already work on many platforms but the makefile probably needs work.  
+
+Useful tasks for possible contributors:
+
+Writing Hardware Tests:  This is #1.  You can use the gcc Sh2 toolchain to compile C and C++ code that will run on Saturn.  Stripped down hardware tests are the best tool for improving emulation and allow for faster increases in accuracy.  Bare-metal tests are preferable to those using Sega's libraries.  See the SaturnOrbit devkit if you're on windows.  There are many test examples in the hardware_tests directory
+
+Refactoring/Optimization:  The code is a total mess and very slow.  
+
+Mac/Linux/Bsd/Mingw/Cmake/Etc people: There's an sdl port and a cmake makefile but I haven't tested it on many platforms.  Any fixes to that makefile would be great!  Cocoa/Qt/Gnome/WxWidgets/Etc ports might be a good idea as well.
+
+Electrical Engineers / People who want to donate: The Cd Block Controller and Smpc both contain internal roms that, if read out, would improve emulation accuracy for all saturn emulators.
+
+There is a project dedicated to this sort of work: 
+
+http://decap.mameworld.info/
+http://guru.mameworld.info/decap/index.html
+
+Smpc is listed as HD404920FS / Saturn 315-5744 on the guru page
+
+Cd Controller is HD6437034S 
+
+The cd controller was previously decapped however, http://decap.mameworld.info/2010/06/29/too-many-rings-around-saturn/
+
+R. Belmont says about that decapping: "Doesn't work, reads all FFs. There's some sort of protection."
+
+Please consult with the people involved first, but a donation towards either decapping the Smpc, which hasn't been done yet, or a second attempt at the Cd Controller could yield great results.
+
+Thanks to the following people/projects for their Saturn related work:
+
+Mame / Mess
+Charles MacDonald
+Yabause
+SaturnOrbit
+Saturnin

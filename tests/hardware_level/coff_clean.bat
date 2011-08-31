@@ -1,0 +1,4 @@
+COPY C:\SaturnOrbit\SET_COF.BAT .\TMP.BAT
+CALL TMP.BAT
+DEL TMP.BAT
+make OBJFMT=coff clean
